@@ -5,7 +5,7 @@ import Atualizacao from "./atualizacao";
 export default class AtualizacaoCliente extends Atualizacao {
     
     private clientes: Cliente[];
-    entrada: Entrada;
+    private entrada: Entrada;
 
     constructor(clientes: Cliente[]) {
         super();
@@ -15,10 +15,8 @@ export default class AtualizacaoCliente extends Atualizacao {
 
     public atualizar(): void {
         console.log("\nAtualização de Cliente:");
-
         
         const cpfCliente = this.entrada.receberTexto("Informe o CPF do cliente que deseja atualizar: ");
-
        
         const cliente = this.encontrarClientePorCPF(cpfCliente);
         if (!cliente) {
