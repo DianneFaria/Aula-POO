@@ -20,7 +20,7 @@ export default class AtualizacaoCliente extends Atualizacao {
        
         const cliente = this.encontrarClientePorCPF(cpfCliente);
         if (!cliente) {
-            console.log("Cliente não encontrado.");
+            console.log("\nCliente não encontrado.\n");
             return;
         }
 
@@ -44,7 +44,7 @@ export default class AtualizacaoCliente extends Atualizacao {
 
         
 
-        console.log("Cliente atualizado com sucesso!");
+        console.log("\nCliente atualizado com sucesso!\n");
     }
 
     public encontrarClientePorCPF(cpf: string): Cliente | undefined {

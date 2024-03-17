@@ -19,19 +19,18 @@ export default class DeleteCliente extends Delete {
 
         const cpfCliente = this.entrada.receberTexto("Informe o CPF do cliente que deseja excluir: ");
 
-
         const indiceCliente = this.encontrarIndiceClientePorCPF(cpfCliente);
 
 
         if (indiceCliente === -1) {
-            console.log("Cliente não encontrado.");
+            console.log("\nCliente não encontrado.\n");
             return;
         }
 
       
         this.clientes.splice(indiceCliente, 1);
 
-        console.log("Cliente excluído com sucesso!");
+        console.log("\nCliente excluído com sucesso!\n");
     }
 
     private encontrarIndiceClientePorCPF(cpf: string): number {

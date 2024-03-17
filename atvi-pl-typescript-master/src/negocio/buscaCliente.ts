@@ -20,7 +20,7 @@ export default class BuscaCliente extends Busca {
 
         const cliente = this.encontrarClientePorCPF(cpfCliente);
         if (!cliente) {
-            console.log("Cliente não encontrado.");
+            console.log("\nCliente não encontrado.\n");
             return;
         }
 
