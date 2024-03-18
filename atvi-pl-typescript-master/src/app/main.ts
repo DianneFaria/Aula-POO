@@ -6,11 +6,18 @@ import ListagemClientes from "../negocio/listagemClientes";
 import DeleteCliente from "../negocio/deleteCliente";
 import BuscaCliente from "../negocio/buscaCliente";
 import CadastroPet from "../negocio/cadastroPet";
-import Pet from "../modelo/pet";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import AtualizacaoPet from "../negocio/atualizacaoPet";
 import BuscaPet from "../negocio/buscaPet";
 import DeletePet from "../negocio/deletePet";
+import CadastroProduto from "../negocio/cadastroProduto";
+import BuscarProduto from "../negocio/buscaProduto";
+import AtualizacaoProduto from "../negocio/atualizacaoProduto";
+import DeleteProduto from "../negocio/deleteProduto";
+import CadastroServico from "../negocio/cadastroServico";
+import BuscaServico from "../negocio/buscaServico";
+import AtualizacaoServico from "../negocio/atualizacaoServico";
+import DeleteServico from "../negocio/deleteServico";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -24,10 +31,18 @@ while (execucao) {
     console.log(`4 - Deletar cliente`);
     console.log(`5 - Listar todos os clientes`);
     console.log(`6 - Cadastrar pet`);
-    console.log(`7 - Atualizar pet`);
-    console.log(`8 - Buscar pet`);
+    console.log(`7 - Buscar pet`);
+    console.log(`8 - Atualizar pet`);
     console.log(`9 - Deletar pet`);
-    console.log(`10 - Listar todos os produtos `)
+    console.log(`10 - Cadastrar produto`);
+    console.log(`11 - Buscar produto`);
+    console.log(`12 - Atualizar produto`);
+    console.log(`13 - Deletar produto`);
+    console.log(`14 - Cadastrar serviço`);
+    console.log(`15 - Buscar serviço`);
+    console.log(`16 - Atualizar serviço`);
+    console.log(`17 - Deletar serviço`);
+    console.log(`18 - Listar todos os produtos `)
     console.log(`0 - Sair`);  
 
     let entrada = new Entrada()
@@ -44,8 +59,8 @@ while (execucao) {
             busca.buscar()
             break;
         case 3:
-            let atualizacao = new AtualizacaoCliente(empresa.getClientes)
-            atualizacao.atualizar()
+            let atualizacaoCliente = new AtualizacaoCliente(empresa.getClientes)
+            atualizacaoCliente.atualizar()
             break;
         case 4:
             let deleteCliente = new DeleteCliente(empresa.getClientes)
@@ -60,18 +75,50 @@ while (execucao) {
             cadastroPet.cadastrar()
             break; 
         case 7:
-            let atualizacaoPet = new AtualizacaoPet(empresa.getClientes)
-            atualizacaoPet.atualizar()
-            break;
-        case 8:
             let buscaPet = new BuscaPet(empresa.getClientes)
             buscaPet.buscar()
+            break;
+        case 8:
+            let atualizacaoPet = new AtualizacaoPet(empresa.getClientes)
+            atualizacaoPet.atualizar()
             break;
         case 9:
             let deletePet = new DeletePet(empresa.getClientes)
             deletePet.deletar()
             break;
         case 10:
+            let cadastroProduto = new CadastroProduto(empresa.getProdutos)
+            cadastroProduto.cadastrar()
+            break;
+        case 11:
+            let buscaProduto = new BuscarProduto(empresa.getProdutos)
+            buscaProduto.buscar()
+            break;
+        case 12:
+            let atualizacaoProduto = new AtualizacaoProduto(empresa.getProdutos)
+            atualizacaoProduto.atualizar()
+            break;
+        case 13:
+            let deleteProduto = new DeleteProduto(empresa.getProdutos)
+            deleteProduto.deletar()
+            break;
+        case 14:
+            let cadastroServico = new CadastroServico(empresa.getServicos)
+            cadastroServico.cadastrar()
+            break;
+        case 15:
+            let buscaServico = new BuscaServico(empresa.getServicos)
+            buscaServico.buscar()
+            break;
+        case 16:
+            let atualizacaoServico = new AtualizacaoServico(empresa.getServicos)
+            atualizacaoServico.atualizar()
+            break;
+        case 17:
+            let deleteServico = new DeleteServico(empresa.getServicos)
+            deleteServico.deletar()
+            break;
+        case 18:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break; 

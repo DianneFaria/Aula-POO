@@ -16,7 +16,6 @@ export default class DeleteCliente extends Delete {
 
     public deletar(): void {
 
-
         const cpfCliente = this.entrada.receberTexto("Informe o CPF do cliente que deseja excluir: ");
 
         const indiceCliente = this.encontrarIndiceClientePorCPF(cpfCliente);

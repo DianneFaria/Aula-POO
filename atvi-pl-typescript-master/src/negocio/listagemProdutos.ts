@@ -1,3 +1,4 @@
+import cliente from "../modelo/cliente";
 import Produto from "../modelo/produto";
 import Listagem from "./listagem";
 
@@ -11,9 +12,9 @@ export default class ListagemProdutos extends Listagem {
     public listar(): void {
         console.log(`\nLista de todos os produtos:`);
         this.produtos.forEach(produto => {
-            console.log(`Nome: ` + produto.nome);
-            //console.log(`Nome social: ` + cliente.nomeSocial);
-            //console.log(`CPF: ` + cliente.getCpf.getValor);
+            console.log(`Código do produto: ` + produto.codigoProduto);
+            console.log(`Nome do produto: ` + produto.nomeProduto);
+            console.log(`Descrição do produto: ` + produto.descricaoProduto);
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);
