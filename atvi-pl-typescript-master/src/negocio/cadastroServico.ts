@@ -19,8 +19,9 @@ export default class CadastroServico extends Cadastro {
         let codigoServico = this.entrada.receberTexto(`Por favor informe o código do serviço: `)
         let nomeServico = this.entrada.receberTexto(`Por favor informe o nome do serviço: `)
         let descricaoServico = this.entrada.receberTexto(`Por favor informe a descrição do serviço: `);
+        let precoServico = this.entrada.receberNumero(`Por favor informe o preço do serviço: `);
 
-        let servico = new Servico(codigoServico, nomeServico, descricaoServico);
+        let servico = new Servico(codigoServico, nomeServico, descricaoServico, precoServico);
         this.servicos.push(servico)
 
         console.log(`\nCadastro de serviço concluído :)\n`);

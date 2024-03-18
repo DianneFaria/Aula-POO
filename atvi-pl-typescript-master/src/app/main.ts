@@ -18,6 +18,7 @@ import CadastroServico from "../negocio/cadastroServico";
 import BuscaServico from "../negocio/buscaServico";
 import AtualizacaoServico from "../negocio/atualizacaoServico";
 import DeleteServico from "../negocio/deleteServico";
+import RegistroConsumo from "../negocio/registroConsumo";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -42,7 +43,8 @@ while (execucao) {
     console.log(`15 - Buscar serviço`);
     console.log(`16 - Atualizar serviço`);
     console.log(`17 - Deletar serviço`);
-    console.log(`18 - Listar todos os produtos `)
+    console.log(`18 - Registrar consumo`);
+    console.log(`19 - Listar todos os produtos `)
     console.log(`0 - Sair`);  
 
     let entrada = new Entrada()
@@ -119,6 +121,10 @@ while (execucao) {
             deleteServico.deletar()
             break;
         case 18:
+            let registroConsumo = new RegistroConsumo(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+            registroConsumo.registrarConsumo()
+            break;
+        case 19:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break; 

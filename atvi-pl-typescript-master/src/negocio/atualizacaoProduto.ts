@@ -29,18 +29,22 @@ export default class AtualizacaoProduto extends Atualizacao {
 
         console.log(`Código do produto: ${produto.codigoProduto}`);
         console.log(`Nome do produto: ${produto.nomeProduto}`);
-        console.log(`Descrição do produto: ${produto.descricaoProduto} \n`);
+        console.log(`Descrição do produto: ${produto.descricaoProduto}`);
+        console.log(`Preço do produto: ${produto.precoProduto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`);
 
         console.log("\nAtualização de dados do produto:");
 
         const novoCodigoProduto = this.entrada.receberTexto("Novo código do produto: ");
         const novoNomeProduto = this.entrada.receberTexto("Novo nome do produto: ");
         const novoDescricaoProduto = this.entrada.receberTexto("Nova descrição do produto: ");
+        const novoPrecoProduto = this.entrada.receberNumero("Novo preço do produto: ");
 
       
         produto.codigoProduto = novoCodigoProduto;
         produto.nomeProduto = novoNomeProduto;
         produto.descricaoProduto = novoDescricaoProduto;
+        produto.precoProduto = novoPrecoProduto;
+
         
         console.log("\nProduto atualizado com sucesso!\n");
     } 

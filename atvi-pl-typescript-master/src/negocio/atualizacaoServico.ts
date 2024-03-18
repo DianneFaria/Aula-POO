@@ -28,18 +28,21 @@ export default class AtualizacaoServico extends Atualizacao {
 
         console.log(`Código do serviço: ${servico.codigoServico}`);
         console.log(`Nome do serviço: ${servico.nomeServico}`);
-        console.log(`Descrição do serviço: ${servico.descricaoServico} \n`);
+        console.log(`Descrição do serviço: ${servico.descricaoServico}`);
+        console.log(`Preço do serviço: ${servico.precoServico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`);
 
         console.log("\nAtualização de dados do serviço:");
 
         const novoCodigoServico = this.entrada.receberTexto("Novo código do serviço: ");
         const novoNomeServico = this.entrada.receberTexto("Novo nome do serviço: ");
         const novoDescricaoServico = this.entrada.receberTexto("Nova descrição do serviço: ");
+        const novoPrecoServico = this.entrada.receberNumero("Novo preço do serviço: ");
 
       
         servico.codigoServico = novoCodigoServico;
         servico.nomeServico = novoNomeServico;
         servico.descricaoServico = novoDescricaoServico;
+        servico.precoServico = novoPrecoServico;
         
         console.log("\nServiço atualizado com sucesso!\n");
     } 

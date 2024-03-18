@@ -29,10 +29,10 @@ export default class BuscaServico extends Busca {
 
         console.log(`Código do serviço: ${servico.codigoServico}`);
         console.log(`Nome do serviço: ${servico.nomeServico}`);
-        console.log(`Descrição do serviço: ${servico.descricaoServico}\n`);
-
-        
+        console.log(`Descrição do serviço: ${servico.descricaoServico}`); 
+        console.log(`Preço do serviço: ${servico.precoServico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`);    
     }
+
     public encontrarServicoPorCodigo(codigo: string): Servico | undefined {
         return this.servicos.find(servico => servico.codigoServico === codigo);
     }

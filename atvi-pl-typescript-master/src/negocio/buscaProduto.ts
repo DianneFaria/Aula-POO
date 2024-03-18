@@ -30,10 +30,10 @@ export default class BuscarProduto extends Busca {
 
         console.log(`Código do produto: ${produto.codigoProduto}`);
         console.log(`Nome do produto: ${produto.nomeProduto}`);
-        console.log(`Descrição do produto: ${produto.descricaoProduto}\n`);
-
-        
+        console.log(`Descrição do produto: ${produto.descricaoProduto}`);  
+        console.log(`Preço do produto: ${produto.precoProduto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n`);
     }
+    
     public encontrarProdutoPorCodigo(codigo: string): Produto | undefined {
         return this.produtos.find(produto => produto.getCodigoProduto === codigo);
     }
