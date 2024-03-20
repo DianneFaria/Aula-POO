@@ -5,8 +5,8 @@ import Servico from "../modelo/servico";
 
 export default class RegistroConsumo {
     private registro: Map<Cliente, Map<Produto | Servico, number>>;
-    private clientes:Array<Cliente>;
-    private produtos: Array<Produto>
+    private clientes: Array<Cliente>;
+    private produtos: Array<Produto>;
     private servicos: Array<Servico>;
     private entrada: Entrada;
 
@@ -15,37 +15,36 @@ export default class RegistroConsumo {
         this.clientes = clientes;
         this.produtos = produtos;
         this.servicos = servicos;
-        this.entrada = new Entrada()
+        this.entrada = new Entrada();
     }
     
     public registrarConsumo(): void {
         let cpfCliente = this.entrada.receberTexto(`Informe o CPF do cliente: `);
         let codigoItem = this.entrada.receberTexto(`Informe o código do produto ou serviço: `);
         let quantidade = this.entrada.receberNumero(`Informe a quantidade: `);
-
+    
         let cliente = this.buscarClientePorCPF(cpfCliente);
         if (!cliente) {
             console.log("\nCliente não encontrado.\n");
             return;
         }
-
+    
         let item = this.buscarItemPorCodigo(codigoItem);
         if (!item) {
-            console.log("\n Produto ou serviço não encontrado.\n");
+            console.log("\nProduto ou serviço não encontrado.\n");
             return;
         }
-
-        if (!this.registro.has(cliente)) {
-            this.registro.set(cliente, new Map());
-        }
-
+    
+        // Verifica se o cliente já possui um registro de consumo
         let consumoCliente = this.registro.get(cliente);
-        if (consumoCliente && consumoCliente.has(item)) {
-            consumoCliente.set(item, (consumoCliente.get(item) || 0) + quantidade);
-        } else {
-            consumoCliente?.set(item, quantidade);
+        if (!consumoCliente) {
+            consumoCliente = new Map();
+            this.registro.set(cliente, consumoCliente);
         }
-
+    
+        // Atualiza ou adiciona o consumo para o item específico
+        consumoCliente.set(item, (consumoCliente.get(item) ?? 0) + quantidade);
+    
         let nomeItem = item instanceof Produto ? item.nomeProduto : item.nomeServico;
         console.log(`\nConsumo registrado para o cliente ${cliente.nome}: ${quantidade} unidade(s) de ${nomeItem}\n`);
     }
@@ -66,5 +65,11 @@ export default class RegistroConsumo {
         return item;
     } 
 
+    public listarConsumoPorCliente(cliente: Cliente): Map<Produto | Servico, number> | undefined {
+        return this.registro.get(cliente);
+    }
     
+    public listarTodosOsClientes(): Cliente[] {
+        return this.clientes.filter(cliente => this.registro.has(cliente));
+    }
 }

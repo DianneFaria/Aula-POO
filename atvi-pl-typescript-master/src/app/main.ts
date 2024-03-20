@@ -19,10 +19,17 @@ import BuscaServico from "../negocio/buscaServico";
 import AtualizacaoServico from "../negocio/atualizacaoServico";
 import DeleteServico from "../negocio/deleteServico";
 import RegistroConsumo from "../negocio/registroConsumo";
+import TopDezClientes from "../negocio/topDezClientes";
+import TopProdutosServicos from "../negocio/TopProdutosServicos";
+import Produto from "../modelo/produto";
+import Servico from "../modelo/servico";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
 let execucao = true
+
+let registroConsumo: RegistroConsumo | undefined;
+
 
 while (execucao) {
     console.log(`Opções:`);
@@ -44,7 +51,9 @@ while (execucao) {
     console.log(`16 - Atualizar serviço`);
     console.log(`17 - Deletar serviço`);
     console.log(`18 - Registrar consumo`);
-    console.log(`19 - Listar todos os produtos `)
+    console.log(`19 - Listar 10 clientes em quantidade de consumo`);
+    console.log(`20 - Produtos e serviços mais consumidos `)
+    console.log(`21 - Listar todos os produtos `)
     console.log(`0 - Sair`);  
 
     let entrada = new Entrada()
@@ -121,10 +130,28 @@ while (execucao) {
             deleteServico.deletar()
             break;
         case 18:
-            let registroConsumo = new RegistroConsumo(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
-            registroConsumo.registrarConsumo()
+            if (!registroConsumo) {
+                registroConsumo = new RegistroConsumo(empresa.getClientes, empresa.getProdutos, empresa.getServicos);
+            }
+            registroConsumo.registrarConsumo();
             break;
         case 19:
+            if (registroConsumo) {
+                let topDezClientes = new TopDezClientes(registroConsumo)
+                topDezClientes.exibirTopClientes()
+            } else {
+                console.log("Registro de consumo não foi inicializado.")
+            }
+            break;
+        case 20:
+            if (registroConsumo) {
+                const topProdutosServicos = new TopProdutosServicos(registroConsumo);
+                topProdutosServicos.exibirTopProdutosServicos();
+            } else {
+                console.log("Registro de consumo não foi inicializado.")
+            }
+            break;
+        case 21:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break; 
