@@ -2,6 +2,7 @@ import Entrada from "../io/entrada";
 import Cliente from "../modelo/cliente";
 import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
+import Pet from "../modelo/pet";
 
 export default class RegistroConsumo {
     private registro: Map<Cliente, Map<Produto | Servico, number>>;

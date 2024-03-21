@@ -23,6 +23,7 @@ import TopDezClientes from "../negocio/topDezClientes";
 import TopProdutosServicos from "../negocio/TopProdutosServicos";
 import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
+import TopProdutosServicosPorTipoRaca from "../negocio/produtosServicosPorTipo";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -53,7 +54,8 @@ while (execucao) {
     console.log(`18 - Registrar consumo`);
     console.log(`19 - Listar 10 clientes em quantidade de consumo`);
     console.log(`20 - Produtos e serviços mais consumidos `)
-    console.log(`21 - Listar todos os produtos `)
+    console.log(`21 - Listar produtos e serviços por tipo e raça `)
+    console.log(`22 - Listar todos os produtos `)
     console.log(`0 - Sair`);  
 
     let entrada = new Entrada()
@@ -152,6 +154,14 @@ while (execucao) {
             }
             break;
         case 21:
+            if (registroConsumo) {
+                let topProdutosServicosPorTipo = new TopProdutosServicosPorTipoRaca(registroConsumo)
+                topProdutosServicosPorTipo.listarTopProdutosServicosPorTipoRaca()
+            } else {
+                console.log("Registro de consumo não foi inicializado.")
+            }
+            break;
+        case 22:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break; 

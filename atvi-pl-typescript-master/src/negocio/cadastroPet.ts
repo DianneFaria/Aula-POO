@@ -23,7 +23,7 @@ export default class CadastroPet extends Cadastro {
 
         const cliente = this.encontrarClientePorCPF(cpfDono);
         if (cliente) {
-            let novoPet = new Pet(nome, tipo, raca, genero)
+            let novoPet = new Pet(nome, raca, genero, tipo)
             cliente.getPets.push(novoPet)
             console.log(`\nCadastro do pet ${nome} para o cliente ${cliente.nome} concluído :)\n`);
         } else {

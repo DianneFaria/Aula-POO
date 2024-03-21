@@ -10,4 +10,9 @@ export default class Servico {
         this.descricaoServico = descricaoServico
         this.precoServico = precoServico
     }
+
+    public get getCodigoServico(){return this.codigoServico}
+    public get getNomeServico(){return this.nomeServico}
+    public get getDescricaoServico(){return this.descricaoServico}
+    public get getPrecoServico(){return this.precoServico}
 }
