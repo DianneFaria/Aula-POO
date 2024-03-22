@@ -25,6 +25,7 @@ import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
 import TopProdutosServicosPorTipoRaca from "../negocio/produtosServicosPorTipo";
 import TopClientesPorValor from "../negocio/topClientesPorValor";
+import ListagemServicos from "../negocio/listagemServicos";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -58,6 +59,7 @@ while (execucao) {
     console.log(`21 - Listar produtos e serviços por tipo e raça `)
     console.log(`22 - Listar top 5 clientes em valor`)
     console.log(`23 - Listar todos os produtos `)
+    console.log(`24 - Listar todos os servicos `)
     console.log(`0 - Sair`);  
 
     let entrada = new Entrada()
@@ -174,6 +176,10 @@ while (execucao) {
         case 23:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
+            break; 
+        case 24:
+            let listagemServicos = new ListagemServicos(empresa.getServicos)
+            listagemServicos.listar()
             break; 
         case 0:
             execucao = false
